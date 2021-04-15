@@ -1,5 +1,42 @@
 # Intro to Active Record Relationships
 
+## Key Links
+
+- (Association Basics)[https://guides.rubyonrails.org/association_basics.html]
+- (has_many Documentation)[https://api.rubyonrails.org/v6.1.3.1/classes/ActiveRecord/Associations/ClassMethods.html#method-i-has_many]
+
+
+## Setting up relationships
+
+1. Make sure the side of your relationship that `belongs_to` something else has a column in its table to hold the relationship.
+```ruby
+  create_table :clients do |t|
+    t.string :name
+    t.integer :client_id
+  end
+```
+
+
+## Has Many Methods (from the Documentation):
+
+For a firm that has many clients (remember that a `#` denotes an instance methods. All of these would be called on an instance of a firm.)
+
+- `Firm#clients` (similar to Client.where(firm_id: id))
+- `Firm#clients<<`
+- `Firm#clients.delete`
+- `Firm#clients.destroy`
+- `Firm#clients=`
+- `Firm#client_ids`
+- `Firm#client_ids=`
+- `Firm#clients.clear`
+- `Firm#clients.empty?` (similar to firm.clients.size == 0)
+- `Firm#clients.size` (similar to Client.count "firm_id = #{id}")
+- `Firm#clients.find` (similar to Client.where(firm_id: id).find(id))
+- `Firm#clients.exists?(name: 'ACME')` (similar to Client.exists?(name: 'ACME', firm_id: firm.id))
+- `Firm#clients.build` (similar to Client.new(firm_id: id))
+- `Firm#clients.create` (similar to c = Client.new(firm_id: id); c.save; c)
+- `Firm#clients.create!` (similar to c = Client.new(firm_id: id); c.save!)
+- `Firm#clients.reload`
 
 ## Breaking Better: A Breaking Bad Support Group For Breaking Buds
 
