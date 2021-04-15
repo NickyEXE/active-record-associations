@@ -2,8 +2,10 @@
 
 ## Key Links
 
-- (Association Basics)[https://guides.rubyonrails.org/association_basics.html]
-- (has_many Documentation)[https://api.rubyonrails.org/v6.1.3.1/classes/ActiveRecord/Associations/ClassMethods.html#method-i-has_many]
+- [Association Basics](https://guides.rubyonrails.org/association_basics.html)
+- [has_many Documentation](https://api.rubyonrails.org/v6.1.3.1/classes/ActiveRecord/Associations/ClassMethods.html#method-i-has_many)
+- [belongs_to Documentation](https://apidock.com/rails/ActiveRecord/Associations/ClassMethods/belongs_to)
+- [Walkthrough on More Advanced Macro Use](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/active-record-associations)
 
 
 ## Setting up relationships
@@ -12,14 +14,37 @@
 ```ruby
   create_table :clients do |t|
     t.string :name
-    t.integer :client_id
+    t.integer :firm_id
   end
 ```
 
+2. Make sure that both models inherit from ActiveRecord::Base
+```ruby
+  class Firm < ActiveRecord::Base
+    #...
+  end
+
+  class Client < ActiveRecord::Base
+    #...
+  end
+```
+
+3. Add your has_many and belongs_to
+```ruby
+  class Firm < ActiveRecord::Base
+    has_many :clients
+  end
+
+  class Client < ActiveRecord::Base
+    belongs_to :firm
+  end
+```
 
 ## Has Many Methods (from the Documentation):
 
 For a firm that has many clients (remember that a `#` denotes an instance methods. All of these would be called on an instance of a firm.)
+
+Many of these methods have equivalents on the belongs_to side. Check out the documentation for a list.
 
 - `Firm#clients` (similar to Client.where(firm_id: id))
 - `Firm#clients<<`
