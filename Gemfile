@@ -14,3 +14,11 @@ gem 'dotenv'
 gem "tty-prompt", "~> 0.23.0"
 
 gem "httparty", "~> 0.18.1"
+
+gem "activerecord", "~> 5.2.4"
+
+gem "sinatra-activerecord", "~> 2.0"
+
+gem "sqlite3", "~> 1.4"
+
+gem "rake", "~> 13.0"

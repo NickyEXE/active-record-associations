@@ -1,29 +1,34 @@
-class Character
+class Character < ActiveRecord::Base
+  has_many :messages
 
-  attr_reader :name, :birthday, :img, :occupation, :status, :actor, :nickname
+  # attr_reader :name, :birthday, :img, :occupation, :status, :actor, :nickname
 
-  @@all = []
+  # @@all = []
 
-  def initialize(hash)
-    @name = hash["name"]
-    @birthday = hash["birthday"]
-    @img = hash["img"]
-    @occupation = hash["occupation"]
-    @status = hash["status"]
-    @actor = hash["portrayed"]
-    @nickname = hash["nickname"]
-    @@all << self
-  end
+  # def initialize(hash)
+  #   @name = hash["name"]
+  #   @birthday = hash["birthday"]
+  #   @img = hash["img"]
+  #   @occupation = hash["occupation"]
+  #   @status = hash["status"]
+  #   @actor = hash["portrayed"]
+  #   @nickname = hash["nickname"]
+  #   @@all << self
+  # end
 
-  def self.all
-    @@all
-  end
+  # def self.all
+  #   @@all
+  # end
 
-  def self.find_by_name(name)
-    # iterate through the character array (@@all)
-    # check to see if the name == the character we're looking at's name
-    self.all.find{|character| character.name == name}
-  end
+  # def self.find_by_name(name)
+  #   # iterate through the character array (@@all)
+  #   # check to see if the name == the character we're looking at's name
+  #   self.all.find{|character| character.name == name}
+  # end
+
+  # def messages
+  #   Message.where(character_id: self.id)
+  # end
 
   def print_details
     puts self.name
@@ -38,9 +43,6 @@ class Character
     Message.new(content, self, user)
   end
 
-  def messages
-    Message.all.select{|message| message.character == self}
-  end
 
   def print_messages
     if messages.any?

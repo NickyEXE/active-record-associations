@@ -1,11 +1,12 @@
-task :environment do
-  require_relative "./config/environment.rb"
+require_relative "./config/environment.rb"
+require "sinatra/activerecord/rake"
+
+desc "Open the console"
+task :console do
+  Pry.start
 end
 
-task :console => :environment do
-  binding.pry
-end
-
-task :run => :environment do
+desc "Run the app"
+task :run do
   CLI.new
 end

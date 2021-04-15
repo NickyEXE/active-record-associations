@@ -42,6 +42,7 @@ class CLI
 
   def show_characters(characters)
     input = @prompt.select("Which character would you like to view?", characters.map{|character| character.name})
+    # AR method
     @character = Character.find_by_name(input)
     character.print_details
     character_menu
@@ -64,6 +65,7 @@ class CLI
 
   def prompt_login
     username = @prompt.ask("What's your username?")
+    # AR method
     @user = User.find_or_create(username)
   end
 
@@ -110,6 +112,7 @@ class CLI
   private
 
   def add_message(content)
+    # AR method
     character.add_message(content, user)
   end
 

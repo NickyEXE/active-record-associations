@@ -7,7 +7,6 @@
 - [belongs_to Documentation](https://apidock.com/rails/ActiveRecord/Associations/ClassMethods/belongs_to)
 - [Walkthrough on More Advanced Macro Use](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/active-record-associations)
 
-
 ## Setting up relationships
 
 1. Make sure the side of your relationship that `belongs_to` something else has a column in its table to hold the relationship.

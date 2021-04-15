@@ -1,17 +1,21 @@
-class Message
+class Message < ActiveRecord::Base
+  belongs_to :character
 
-  @@all = []
+  # @@all = []
+  # attr_reader :content, :character, :user
 
-  attr_reader :content, :character, :user
+  # def initialize(content, character, user)
+  #   @content, @character, @user = content, character, user
+  #   @@all << self
+  # end
 
-  def initialize(content, character, user)
-    @content, @character, @user = content, character, user
-    @@all << self
-  end
+  # def self.all
+  #   @@all
+  # end
 
-  def self.all
-    @@all
-  end
+  # def character
+  #   Character.find(self.character_id)
+  # end
 
   def username
     user.username
