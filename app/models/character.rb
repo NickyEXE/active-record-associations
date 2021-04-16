@@ -1,5 +1,6 @@
 class Character < ActiveRecord::Base
   has_many :messages
+  has_many :users, through: :messages
 
   # attr_reader :name, :birthday, :img, :occupation, :status, :actor, :nickname
 
@@ -34,10 +35,19 @@ class Character < ActiveRecord::Base
     puts self.name
     puts "Nickname: #{self.nickname}"
     puts "Birthday: #{self.birthday}"
-    puts "Occupation: #{self.occupation.join(", ")}"
+    puts "Occupation: #{self.occupation}"
     puts "Status: #{self.status}"
     puts "Played By: #{self.actor}"
   end
+
+  # AR method:
+  # def users
+  # # SELECT users.* FROM characters
+  # # INNER JOIN messages
+  # # ON messages.character_id = characters.id
+  # # INNER JOIN users
+  # # ON users.id = messages.user_id
+  # end
 
   def add_message(content, user)
     Message.new(content, self, user)

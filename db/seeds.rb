@@ -13,8 +13,8 @@ BreakingBadAPI.new.response.each do |character_hash|
 end
 
 
-# spongebob = User.find_or_create("Spongebob Squarepants")
-# walt = Character.all.first
-# walt.add_message("Happy teacher appreciation day", spongebob)
-# walt.add_message("Keep grinding!", spongebob)
-# walt.add_message("Hi there!", spongebob)
+spongebob = User.find_or_create_by(username: "Spongebob Squarepants")
+walt = Character.all.first
+walt.messages.create(content: "Happy teacher appreciation day", user: spongebob)
+walt.messages.create(content: "Keep grinding!", user: spongebob)
+walt.messages.create(content: "Hi there!", user: spongebob)

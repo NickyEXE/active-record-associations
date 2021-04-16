@@ -66,7 +66,7 @@ class CLI
   def prompt_login
     username = @prompt.ask("What's your username?")
     # AR method
-    @user = User.find_or_create(username)
+    @user = User.find_or_create_by(username: username)
   end
 
   def character_menu
@@ -113,7 +113,7 @@ class CLI
 
   def add_message(content)
     # AR method
-    character.add_message(content, user)
+    character.messages.create(content: content, user: user)
   end
 
 end
